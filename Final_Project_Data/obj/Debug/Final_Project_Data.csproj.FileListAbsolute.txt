@@ -3,3 +3,15 @@ C:\Users\Student\source\repos\Final_Project\Final_Project_Data\bin\Debug\Final_P
 C:\Users\Student\source\repos\Final_Project\Final_Project_Data\obj\Debug\Final_Project_Data.csproj.CoreCompileInputs.cache
 C:\Users\Student\source\repos\Final_Project\Final_Project_Data\obj\Debug\Final_Project_Data.dll
 C:\Users\Student\source\repos\Final_Project\Final_Project_Data\obj\Debug\Final_Project_Data.pdb
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\bin\Debug\Final_Project_Data.dll.config
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\bin\Debug\Final_Project_Data.dll
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\bin\Debug\Final_Project_Data.pdb
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\bin\Debug\EntityFramework.dll
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\bin\Debug\EntityFramework.xml
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\obj\Debug\Final_Project_Data.csprojAssemblyReference.cache
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\obj\Debug\Final_Project_Data.csproj.CoreCompileInputs.cache
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\obj\Debug\Final_Project_Data.csproj.CopyComplete
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\obj\Debug\Final_Project_Data.dll
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\obj\Debug\Final_Project_Data.pdb
