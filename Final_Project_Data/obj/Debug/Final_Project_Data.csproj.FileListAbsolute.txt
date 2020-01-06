@@ -1,0 +1,5 @@
+C:\Users\Student\source\repos\Final_Project\Final_Project_Data\bin\Debug\Final_Project_Data.dll
+C:\Users\Student\source\repos\Final_Project\Final_Project_Data\bin\Debug\Final_Project_Data.pdb
+C:\Users\Student\source\repos\Final_Project\Final_Project_Data\obj\Debug\Final_Project_Data.csproj.CoreCompileInputs.cache
+C:\Users\Student\source\repos\Final_Project\Final_Project_Data\obj\Debug\Final_Project_Data.dll
+C:\Users\Student\source\repos\Final_Project\Final_Project_Data\obj\Debug\Final_Project_Data.pdb
