@@ -59,7 +59,7 @@
     <Compile Include="AspNetUser.cs">
       <DependentUpon>Final_Project.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Metadata.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>Final_Project.tt</DependentUpon>
     </Compile>
