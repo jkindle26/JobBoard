@@ -77,7 +77,6 @@ namespace Final_Project_Data
 
     #endregion
 
-
     #region ApplicationStatus
 
     [MetadataType(typeof(ApplicationStatusMetadata))]

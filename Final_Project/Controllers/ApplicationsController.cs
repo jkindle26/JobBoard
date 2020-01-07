@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Final_Project_Data;
+using Microsoft.AspNet.Identity;
 
 namespace Final_Project.Controllers
 {
+    [Authorize(Roles ="Admin,Corporate,Manager")]
     public class ApplicationsController : Controller
     {
         private JobBoardEntities db = new JobBoardEntities();
@@ -18,7 +20,24 @@ namespace Final_Project.Controllers
         public ActionResult Index()
         {
             var applications = db.Applications.Include(a => a.ApplicationStatu).Include(a => a.OpenPosition);
+
+            if (User.IsInRole("Admin,Coporate,Manager,Employee"))
+            {
+                var id = User.Identity.GetUserId();
+
+                 applications= applications.Where(x => x.UserId == id);
+
+                if (applications.Count() == 0)
+                {
+                    Session["NoApplications"] = " You Currently Have Not Applied";
+                    return RedirectToAction("Create");
+                }
+
+            }
+
+
             return View(applications.ToList());
+
         }
 
         // GET: Applications/Details/5
