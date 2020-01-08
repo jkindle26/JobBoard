@@ -70,8 +70,8 @@ namespace Final_Project.Controllers
                     return View(cvm);
                 }
 
-
-                return View("Index");
+                ViewBag.FailedSend = null;
+                return View("EmailConfirmation",cvm);
 
 
 

@@ -24,5 +24,6 @@ namespace Final_Project_Data
     
         public virtual ApplicationStatus ApplicationStatu { get; set; }
         public virtual OpenPosition OpenPosition { get; set; }
+        public virtual UserDetail UserDetail { get; set; }
     }
 }

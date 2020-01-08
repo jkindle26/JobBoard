@@ -2,17 +2,19 @@
 
 
 <!-- Navigation -->
-<header class="masthead team" style="padding-left:15em;">
-    <div class="container">
-        @if (ViewBag.FailedEmailMessage != null)
-        {
-            <div class="text-danger text-center">
-                @ViewBag.FailedEmailMessage
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+<h2>Contact Us</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @if (ViewBag.FailedSend != null)
+            {
+                <div class="panel-heading panel-warning">
+                    <strong>@ViewBag.FailedSend</strong>
+                </div>
+            }
 
             <div class="form-horizontal">
 
@@ -63,6 +65,6 @@
                     </div>
                 </div>
             </div>
-        }
-    </div>
-</header>
+            }
+        </div>
+</div>

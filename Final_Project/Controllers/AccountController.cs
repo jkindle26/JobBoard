@@ -1,4 +1,4 @@
-﻿using IdentitySample.Models;
+﻿using Final_Project.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -6,6 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System;
+using Final_Project_Data;
+using IdentitySample.Models;
 
 namespace IdentitySample.Controllers
 {
@@ -153,11 +156,57 @@ namespace IdentitySample.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    #region Add Custom UserDetails
+
+                    UserDetails applicant = new UserDetails()
+                    {
+                        UserId = user.Id,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Email = user.Email,
+                        Resume = "noImage.jpg",
+                    };
+
+                    if (resume != null)
+                    {
+                        //if there is a photo, make sure it's an image
+                        string file = resume.FileName;
+                        string ext = file.Substring(file.LastIndexOf('.'));
+
+                        //create a white list of acceptable extensions
+                        string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+
+                        if (goodExts.Contains(ext))
+                        {
+                            if (resume.ContentLength <= 10000000) //10mb
+                            {
+
+                                file = Guid.NewGuid() + ext;
+                                resume.SaveAs(Server.MapPath("~/Content/resumes/" + file));
+                                UserDetails.PhotoUrl = file;
+                            }
+                        }
+
+                    }
+
+
+                    Final_ProjectEntities db = new Final_ProjectEntities();
+                    db.Students.Add(applicant);
+                    db.SaveChanges();
+
+                    UserManager.AddToRole(user.Id, "applicant");
+
+                    #endregion
+
+
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                     ViewBag.Link = callbackUrl;
                     return View("DisplayEmail");
+
+
+
                 }
                 AddErrors(result);
             }

@@ -10,6 +10,7 @@ using Final_Project_Data;
 
 namespace Final_Project.Controllers
 {
+    [Authorize(Roles ="Admin,Corporate,Manager")]
     public class OpenPositionsController : Controller
     {
         private JobBoardEntities db = new JobBoardEntities();

@@ -32,5 +32,6 @@ namespace Final_Project_Data
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<OpenPosition> OpenPositions { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<UserDetail> UserDetails { get; set; }
     }
 }
