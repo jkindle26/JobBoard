@@ -97,6 +97,12 @@ namespace Final_Project_Data
 
     #endregion
 
+    #region UserDetails
+
+
+
+    #endregion
+
 
 
 

@@ -158,7 +158,7 @@ namespace IdentitySample.Controllers
                 {
                     #region Add Custom UserDetails
 
-                    UserDetails applicant = new UserDetails()
+                    Final_Project_Data.UserDetails applicant = new UserDetails()
                     {
                         UserId = user.Id,
                         FirstName = model.FirstName,
