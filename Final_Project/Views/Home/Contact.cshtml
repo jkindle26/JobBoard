@@ -5,8 +5,8 @@
 <h2>Contact Us</h2>
 
 <div class="container">
-    @using (Html.BeginForm())
-    {
+    @*@using (Html.BeginForm())*@
+    
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
             @if (ViewBag.FailedSend != null)
@@ -65,6 +65,6 @@
                     </div>
                 </div>
             </div>
-            }
+            
         </div>
 </div>

@@ -7,10 +7,10 @@
 <h2>Register</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>RegisterViewModel</h4>
         <hr />
@@ -57,9 +57,12 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Resume, htmlAttributes: new { @class = "control-label col-md-2" })
+
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Resume, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Resume, "", new { @class = "text-danger" })
+              
+                @*Html.EditorFor(model => model.Resume, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Resume, "", new { @class = "text-danger" })*@
+                <input type="file" name="Resume" />
             </div>
         </div>
 
@@ -71,9 +74,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
