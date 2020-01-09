@@ -175,8 +175,6 @@
     <Property Name="ResumeFilename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Applications" Relationship="JobBoardModel.FK_Applications_UserDetails" FromRole="UserDetail" ToRole="Application" />
     <NavigationProperty Name="Locations" Relationship="JobBoardModel.FK_Locations_UserDetails" FromRole="UserDetail" ToRole="Location" />
-    <Property Name="Email" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
-    <Property Name="Resume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Applications_UserDetails">
     <End Type="JobBoardModel.UserDetail" Role="UserDetail" Multiplicity="1" />

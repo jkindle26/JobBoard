@@ -29,6 +29,10 @@
                     <li>@Html.ActionLink("Open Positions","Index", "OpenPositions")</li>
                         
                     }
+                    @if (User.IsInRole("Admin,Corporate"))
+                    {
+                    <li>@Html.ActionLink("Locations","Index","Locations")</li>
+                    }
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
                         <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
@@ -41,6 +45,7 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+        @RenderSection("partial", false)
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

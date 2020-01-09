@@ -114,12 +114,7 @@ namespace Final_Project_Data
         [StringLength(75,ErrorMessage ="File name can not be over 50 characters")]
         [Display(Name ="Resume file name")]
         [Required(ErrorMessage = "***Required***")]
-        public string ResumeFileName { get; set; }
-        [Required(ErrorMessage ="***Required***")]
-        [DataType(DataType.EmailAddress,ErrorMessage ="Please enter valid email address")]
-        public string Email { get; set; }
-        [Display(Name ="Resume")]
-        public string Resume { get; set; }
+        public string ResumeFilename { get; set; }
     }
 
     #endregion

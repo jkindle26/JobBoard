@@ -163,8 +163,7 @@ namespace IdentitySample.Controllers
                         UserId = user.Id,
                         FirstName = model.FirstName,
                         LastName = model.LastName,
-                        Email = user.Email,
-                        Resume = "noImage.jpg",
+                        ResumeFilename = null
                     };
 
                     if (Resume != null)
@@ -174,7 +173,7 @@ namespace IdentitySample.Controllers
                         string ext = file.Substring(file.LastIndexOf('.'));
 
                         //create a white list of acceptable extensions
-                        string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+                        string[] goodExts = { ".pdf" };
 
                         if (goodExts.Contains(ext))
                         {
@@ -183,7 +182,7 @@ namespace IdentitySample.Controllers
 
                                 file = Guid.NewGuid() + ext;
                                 Resume.SaveAs(Server.MapPath("~/Content/resumes/" + file));
-                                applicant.Resume = file;
+                                applicant.ResumeFilename = file;
                             }
                         }
 

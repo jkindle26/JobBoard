@@ -81,8 +81,6 @@
     <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ResumeFilename" Type="varchar" MaxLength="50" />
-    <Property Name="Email" Type="nvarchar" MaxLength="60" Nullable="false" />
-    <Property Name="Resume" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <Association Name="FK_Applications_ApplicationStatus">
     <End Role="ApplicationStatus" Type="Self.ApplicationStatus" Multiplicity="1" />

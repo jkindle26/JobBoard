@@ -25,8 +25,6 @@ namespace Final_Project_Data
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ResumeFilename { get; set; }
-        public string Email { get; set; }
-        public string Resume { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Application> Applications { get; set; }

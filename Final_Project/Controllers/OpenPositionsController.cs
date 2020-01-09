@@ -10,7 +10,7 @@ using Final_Project_Data;
 
 namespace Final_Project.Controllers
 {
-    [Authorize(Roles ="Admin,Corporate,Manager")]
+    [Authorize]
     public class OpenPositionsController : Controller
     {
         private JobBoardEntities db = new JobBoardEntities();
@@ -38,6 +38,7 @@ namespace Final_Project.Controllers
         }
 
         // GET: OpenPositions/Create
+        [Authorize(Roles ="Admin,Corporate,Manager")]
         public ActionResult Create()
         {
             ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "StoreNumber");
@@ -48,6 +49,7 @@ namespace Final_Project.Controllers
         // POST: OpenPositions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin,Corporate,Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OpenPositionId,PositionId,LocationId")] OpenPosition openPosition)
@@ -65,6 +67,7 @@ namespace Final_Project.Controllers
         }
 
         // GET: OpenPositions/Edit/5
+        [Authorize(Roles = "Admin,Corporate,Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +87,7 @@ namespace Final_Project.Controllers
         // POST: OpenPositions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin,Corporate,Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OpenPositionId,PositionId,LocationId")] OpenPosition openPosition)
@@ -100,6 +104,7 @@ namespace Final_Project.Controllers
         }
 
         // GET: OpenPositions/Delete/5
+        [Authorize(Roles = "Admin,Corporate,Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,6 +120,7 @@ namespace Final_Project.Controllers
         }
 
         // POST: OpenPositions/Delete/5
+        [Authorize(Roles = "Admin,Corporate,Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
