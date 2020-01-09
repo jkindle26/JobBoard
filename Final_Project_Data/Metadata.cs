@@ -99,7 +99,23 @@ namespace Final_Project_Data
 
     #region UserDetails
 
-
+    [MetadataType(typeof(UserDetailMetadata))]
+    public partial class UserDetail { }
+    public class UserDetailMetadata
+    {
+        [Display(Name ="First Name")]
+        [StringLength(50,ErrorMessage ="First name can not be over 50 characters")]
+        [Required(ErrorMessage = "***Required***")]
+        public string FirstName { get; set; }
+        [Display(Name ="Last Name")]
+        [StringLength(50,ErrorMessage ="Last name can not be over 50 characters")]
+        [Required(ErrorMessage = "***Required***")]
+        public string LastName { get; set; }
+        [StringLength(75,ErrorMessage ="File name can not be over 50 characters")]
+        [Display(Name ="Resume file name")]
+        [Required(ErrorMessage = "***Required***")]
+        public string ResumeFileName { get; set; }
+    }
 
     #endregion
 
