@@ -148,7 +148,7 @@ namespace IdentitySample.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase Resume)
         {
             if (ModelState.IsValid)
             {
@@ -158,7 +158,7 @@ namespace IdentitySample.Controllers
                 {
                     #region Add Custom UserDetails
 
-                    Final_Project_Data.UserDetails applicant = new UserDetails()
+                    Final_Project_Data.UserDetail applicant = new UserDetail()
                     {
                         UserId = user.Id,
                         FirstName = model.FirstName,
@@ -167,10 +167,10 @@ namespace IdentitySample.Controllers
                         Resume = "noImage.jpg",
                     };
 
-                    if (resume != null)
+                    if (Resume != null)
                     {
                         //if there is a photo, make sure it's an image
-                        string file = resume.FileName;
+                        string file = Resume.FileName;
                         string ext = file.Substring(file.LastIndexOf('.'));
 
                         //create a white list of acceptable extensions
@@ -178,20 +178,20 @@ namespace IdentitySample.Controllers
 
                         if (goodExts.Contains(ext))
                         {
-                            if (resume.ContentLength <= 10000000) //10mb
+                            if (Resume.ContentLength <= 10000000) //10mb
                             {
 
                                 file = Guid.NewGuid() + ext;
-                                resume.SaveAs(Server.MapPath("~/Content/resumes/" + file));
-                                UserDetails.PhotoUrl = file;
+                                Resume.SaveAs(Server.MapPath("~/Content/resumes/" + file));
+                                applicant.Resume = file;
                             }
                         }
 
                     }
 
 
-                    Final_ProjectEntities db = new Final_ProjectEntities();
-                    db.Students.Add(applicant);
+                    JobBoardEntities db = new JobBoardEntities();
+                    db.UserDetails.Add(applicant);
                     db.SaveChanges();
 
                     UserManager.AddToRole(user.Id, "applicant");

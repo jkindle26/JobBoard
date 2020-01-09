@@ -86,6 +86,8 @@
           <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ResumeFilename" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Resume" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_Applications_ApplicationStatus">
           <End Role="ApplicationStatus" Type="Self.ApplicationStatus" Multiplicity="1" />
@@ -372,6 +374,8 @@
           <Property Name="ResumeFilename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Applications" Relationship="JobBoardModel.FK_Applications_UserDetails" FromRole="UserDetail" ToRole="Application" />
           <NavigationProperty Name="Locations" Relationship="JobBoardModel.FK_Locations_UserDetails" FromRole="UserDetail" ToRole="Location" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Resume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Applications_UserDetails">
           <End Type="JobBoardModel.UserDetail" Role="UserDetail" Multiplicity="1" />
@@ -485,6 +489,8 @@
           <EntitySetMapping Name="UserDetails">
             <EntityTypeMapping TypeName="JobBoardModel.UserDetail">
               <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="ResumeFilename" ColumnName="ResumeFilename" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />

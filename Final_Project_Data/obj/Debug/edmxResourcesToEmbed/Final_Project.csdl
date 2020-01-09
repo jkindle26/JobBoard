@@ -23,6 +23,7 @@
     <Property Name="ResumeFilename" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="ApplicationStatu" Relationship="Self.FK_Applications_ApplicationStatus" FromRole="Applications" ToRole="ApplicationStatus" />
     <NavigationProperty Name="OpenPosition" Relationship="Self.FK_Applications_OpenPositions" FromRole="Applications" ToRole="OpenPositions" />
+    <NavigationProperty Name="UserDetail" Relationship="JobBoardModel.FK_Applications_UserDetails" FromRole="Application" ToRole="UserDetail" />
   </EntityType>
   <EntityType Name="ApplicationStatus">
     <Key>
@@ -60,6 +61,7 @@
     <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="ManagerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="OpenPositions" Relationship="Self.FK_OpenPositions_Locations" FromRole="Locations" ToRole="OpenPositions" />
+    <NavigationProperty Name="UserDetail" Relationship="JobBoardModel.FK_Locations_UserDetails" FromRole="Location" ToRole="UserDetail" />
   </EntityType>
   <EntityType Name="OpenPosition">
     <Key>
@@ -153,5 +155,51 @@
       <End Role="Positions" EntitySet="Positions" />
       <End Role="OpenPositions" EntitySet="OpenPositions" />
     </AssociationSet>
+    <EntitySet Name="UserDetails" EntityType="JobBoardModel.UserDetail" />
+    <AssociationSet Name="FK_Applications_UserDetails" Association="JobBoardModel.FK_Applications_UserDetails">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Application" EntitySet="Applications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_UserDetails" Association="JobBoardModel.FK_Locations_UserDetails">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="UserDetail">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ResumeFilename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Applications" Relationship="JobBoardModel.FK_Applications_UserDetails" FromRole="UserDetail" ToRole="Application" />
+    <NavigationProperty Name="Locations" Relationship="JobBoardModel.FK_Locations_UserDetails" FromRole="UserDetail" ToRole="Location" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Resume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Applications_UserDetails">
+    <End Type="JobBoardModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+    <End Type="JobBoardModel.Application" Role="Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_UserDetails">
+    <End Type="JobBoardModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+    <End Type="JobBoardModel.Location" Role="Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

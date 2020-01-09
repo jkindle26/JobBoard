@@ -115,6 +115,11 @@ namespace Final_Project_Data
         [Display(Name ="Resume file name")]
         [Required(ErrorMessage = "***Required***")]
         public string ResumeFileName { get; set; }
+        [Required(ErrorMessage ="***Required***")]
+        [DataType(DataType.EmailAddress,ErrorMessage ="Please enter valid email address")]
+        public string Email { get; set; }
+        [Display(Name ="Resume")]
+        public string Resume { get; set; }
     }
 
     #endregion

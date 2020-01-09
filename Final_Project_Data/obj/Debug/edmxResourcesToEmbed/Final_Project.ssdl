@@ -73,6 +73,17 @@
     <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="JobDescription" Type="varchar(max)" />
   </EntityType>
+  <EntityType Name="UserDetails">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ResumeFilename" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="Resume" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <Association Name="FK_Applications_ApplicationStatus">
     <End Role="ApplicationStatus" Type="Self.ApplicationStatus" Multiplicity="1" />
     <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
@@ -94,6 +105,30 @@
       </Principal>
       <Dependent Role="Applications">
         <PropertyRef Name="OpenPositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Applications_UserDetails">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1" />
+    <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Applications">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_UserDetails">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="ManagerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -129,6 +164,7 @@
     <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OpenPositions" EntityType="Self.OpenPositions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Applications_ApplicationStatus" Association="Self.FK_Applications_ApplicationStatus">
       <End Role="ApplicationStatus" EntitySet="ApplicationStatus" />
       <End Role="Applications" EntitySet="Applications" />
@@ -136,6 +172,14 @@
     <AssociationSet Name="FK_Applications_OpenPositions" Association="Self.FK_Applications_OpenPositions">
       <End Role="OpenPositions" EntitySet="OpenPositions" />
       <End Role="Applications" EntitySet="Applications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Applications_UserDetails" Association="Self.FK_Applications_UserDetails">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="Applications" EntitySet="Applications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_UserDetails" Association="Self.FK_Locations_UserDetails">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="Locations" EntitySet="Locations" />
     </AssociationSet>
     <AssociationSet Name="FK_OpenPositions_Locations" Association="Self.FK_OpenPositions_Locations">
       <End Role="Locations" EntitySet="Locations" />

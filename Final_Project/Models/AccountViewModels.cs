@@ -67,6 +67,7 @@ namespace IdentitySample.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Please enter valid email address")]
         public string Email { get; set; }
 
         [Required]
@@ -79,6 +80,21 @@ namespace IdentitySample.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "First Name")]
+        [StringLength(50, ErrorMessage = "First name can not be over 50 characters")]
+        [Required(ErrorMessage = "***Required***")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        [StringLength(50, ErrorMessage = "Last name can not be over 50 characters")]
+        [Required(ErrorMessage = "***Required***")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Resume")]
+        public string Resume { get; set; }
+
+
     }
 
     public class ResetPasswordViewModel
