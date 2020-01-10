@@ -14,3 +14,4 @@ C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Projec
 C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\obj\Debug\Final_Project_Data.csproj.CopyComplete
 C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\obj\Debug\Final_Project_Data.dll
 C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\obj\Debug\Final_Project_Data.pdb
+C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\obj\Debug\Final_Project_Data.csprojAssemblyReference.cache

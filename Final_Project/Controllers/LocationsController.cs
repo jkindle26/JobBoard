@@ -18,6 +18,7 @@ namespace Final_Project.Controllers
         // GET: Locations
         public ActionResult Index()
         {
+            //var locations = db.Locations.Include(l => l.UserDetail);
             return View(db.Locations.ToList());
         }
 
@@ -39,7 +40,7 @@ namespace Final_Project.Controllers
         // GET: Locations/Create
         public ActionResult Create()
         {
-            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "OpenPositionId");
+            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FirstName");
             return View();
         }
 
@@ -57,6 +58,7 @@ namespace Final_Project.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FirstName", location.ManagerId);
             return View(location);
         }
 
@@ -72,6 +74,7 @@ namespace Final_Project.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FirstName", location.ManagerId);//may need to comment out
             return View(location);
         }
 
@@ -88,6 +91,7 @@ namespace Final_Project.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "FirstName", location.ManagerId);//may need to comment out
             return View(location);
         }
 
