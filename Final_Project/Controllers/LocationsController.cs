@@ -39,6 +39,7 @@ namespace Final_Project.Controllers
         // GET: Locations/Create
         public ActionResult Create()
         {
+            ViewBag.ManagerId = new SelectList(db.UserDetails, "UserId", "OpenPositionId");
             return View();
         }
 

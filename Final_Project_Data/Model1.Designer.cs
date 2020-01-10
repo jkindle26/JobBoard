@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\Final_Project.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Student\Documents\Visual Studio 2017\Projects\FinalProject\Final_Project\src\Final_Project_Data\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -23,9 +23,7 @@
     <Property Name="ResumeFilename" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="ApplicationStatus" Relationship="Self.FK_Applications_ApplicationStatus" FromRole="Applications" ToRole="ApplicationStatus" />
     <NavigationProperty Name="OpenPosition" Relationship="Self.FK_Applications_OpenPositions" FromRole="Applications" ToRole="OpenPositions" />
-    <NavigationProperty Name="UserDetail" Relationship="Self.FK_Applications_UserDetails" FromRole="Applications" ToRole="UserDetails" />
-    <Property Name="ApplicationStatusId1" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="ApplicationStatu" Relationship="JobBoardModel.FK_Applications_ApplicationStatus1" FromRole="Application" ToRole="ApplicationStatus" />
+    <NavigationProperty Name="UserDetail" Relationship="Self.FK_Applications_UserDetails1" FromRole="Applications" ToRole="UserDetails" />
   </EntityType>
   <EntityType Name="ApplicationStatus">
     <Key>
@@ -35,7 +33,6 @@
     <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="StatusDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_ApplicationStatus" FromRole="ApplicationStatus" ToRole="Applications" />
-    <NavigationProperty Name="Applications1" Relationship="JobBoardModel.FK_Applications_ApplicationStatus1" FromRole="ApplicationStatus" ToRole="Application" />
   </EntityType>
   <EntityType Name="AspNetRole">
     <Key>
@@ -137,7 +134,7 @@
     <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ResumeFilename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_UserDetails" FromRole="UserDetails" ToRole="Applications" />
+    <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_UserDetails1" FromRole="UserDetails" ToRole="Applications" />
     <NavigationProperty Name="AspNetUser" Relationship="Self.FK_UserDetails_AspNetUsers" FromRole="UserDetails" ToRole="AspNetUsers" />
     <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_UserDetails" FromRole="UserDetails" ToRole="Locations" />
   </EntityType>
@@ -165,7 +162,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Applications_UserDetails">
+  <Association Name="FK_Applications_UserDetails1">
     <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="1" />
     <End Role="Applications" Type="Self.Application" Multiplicity="*" />
     <ReferentialConstraint>
@@ -278,7 +275,7 @@
       <End Role="OpenPositions" EntitySet="OpenPositions" />
       <End Role="Applications" EntitySet="Applications" />
     </AssociationSet>
-    <AssociationSet Name="FK_Applications_UserDetails" Association="Self.FK_Applications_UserDetails">
+    <AssociationSet Name="FK_Applications_UserDetails1" Association="Self.FK_Applications_UserDetails1">
       <End Role="UserDetails" EntitySet="UserDetails" />
       <End Role="Applications" EntitySet="Applications" />
     </AssociationSet>
@@ -310,21 +307,5 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
-    <AssociationSet Name="FK_Applications_ApplicationStatus1" Association="JobBoardModel.FK_Applications_ApplicationStatus1">
-      <End Role="ApplicationStatus" EntitySet="ApplicationStatus1" />
-      <End Role="Application" EntitySet="Applications" />
-    </AssociationSet>
   </EntityContainer>
-  <Association Name="FK_Applications_ApplicationStatus1">
-    <End Type="JobBoardModel.ApplicationStatus" Role="ApplicationStatus" Multiplicity="1" />
-    <End Type="JobBoardModel.Application" Role="Application" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ApplicationStatus">
-        <PropertyRef Name="ApplicationStatusId" />
-      </Principal>
-      <Dependent Role="Application">
-        <PropertyRef Name="ApplicationStatusId1" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

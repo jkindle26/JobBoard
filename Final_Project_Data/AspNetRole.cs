@@ -12,22 +12,18 @@ namespace Final_Project_Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Location
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Location()
+        public AspNetRole()
         {
-            this.OpenPositions = new HashSet<OpenPosition>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int LocationId { get; set; }
-        public string StoreNumber { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string ManagerId { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
-        public virtual UserDetail UserDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpenPosition> OpenPositions { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

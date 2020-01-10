@@ -19,7 +19,7 @@ namespace Final_Project.Controllers
         // GET: Applications
         public ActionResult Index()
         {
-            var applications = db.Applications.Include(a => a.ApplicationStatu).Include(a => a.OpenPosition);
+            var applications = db.Applications.Include(a => a.ApplicationStatus).Include(a => a.OpenPosition);
 
             if (User.IsInRole("Admin,Coporate,Manager,Employee"))
             {

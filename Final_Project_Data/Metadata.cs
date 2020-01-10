@@ -113,7 +113,6 @@ namespace Final_Project_Data
         public string LastName { get; set; }
         [StringLength(75,ErrorMessage ="File name can not be over 50 characters")]
         [Display(Name ="Resume file name")]
-        [Required(ErrorMessage = "***Required***")]
         public string ResumeFilename { get; set; }
     }
 

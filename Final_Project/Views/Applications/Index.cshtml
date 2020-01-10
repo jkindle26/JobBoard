@@ -16,22 +16,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ApplicationDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ManagerNotes)
+            @Html.DisplayNameFor(model => model.UserDetail.LastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ResumeFilename)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApplicationStatu.StatusName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
+            @Html.DisplayNameFor(model => model.ManagerNotes)
         </th>
         <th></th>
     </tr>
@@ -40,22 +40,22 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
+                @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ApplicationDate)
+                @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ManagerNotes)
+                @Html.DisplayNameFor(model => model.ApplicationDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ResumeFilename)
+                @Html.DisplayNameFor(model => model.UserDetail.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ApplicationStatu.StatusName)
+                @Html.DisplayNameFor(model => model.ResumeFilename)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OpenPosition.OpenPositionId)
+                @Html.DisplayNameFor(model => model.ManagerNotes)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) |
