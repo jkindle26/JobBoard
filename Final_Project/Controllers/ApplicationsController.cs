@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Final_Project.Controllers
 {
-    [Authorize(Roles ="Admin,Corporate,Manager")]
+    [Authorize(Roles ="Admin,Corporate,Manager,Employee")]
     public class ApplicationsController : Controller
     {
         private JobBoardEntities db = new JobBoardEntities();
@@ -34,9 +34,8 @@ namespace Final_Project.Controllers
                 }
 
             }
-
-
             return View(applications.ToList());
+
 
         }
 

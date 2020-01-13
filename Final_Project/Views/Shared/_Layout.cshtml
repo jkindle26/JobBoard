@@ -39,7 +39,7 @@
                         <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
                     }
 
-                    @if (User.IsInRole("Manager"))
+                    @if (User.IsInRole("Manager") || User.IsInRole("Employee") || User.IsInRole("Admin") || User.IsInRole("Corporate"))
                     {
                         <li>@Html.ActionLink("Applications","Index","Applications")</li>
                     }

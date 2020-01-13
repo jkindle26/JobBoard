@@ -54,6 +54,12 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
                 </td>
             }
+            @if (User.IsInRole("employee"))
+            {
+                <td>
+                    @Html.ActionLink("Apply","Apply", new { id=item.OpenPositionId})
+                </td>
+            };
         </tr>
     }
 
