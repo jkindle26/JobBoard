@@ -27,6 +27,7 @@ namespace Final_Project_Data
 
         [StringLength(75,ErrorMessage ="File must be 75 or less characters")]
         [Required(ErrorMessage = "***Required***")]
+        [Display(Name ="File Name")]
         public string ResumeFilename { get; set; }
 
     }
@@ -41,6 +42,7 @@ namespace Final_Project_Data
     {
         [StringLength(10,ErrorMessage ="Store number can only be 10 characters")]
         [Required(ErrorMessage = "***Required***")]
+        [Display(Name ="Store #")]
         public string StoreNumber { get; set; }
 
         [StringLength(50,ErrorMessage ="City can not be more than 50 chararcters")]
@@ -71,6 +73,7 @@ namespace Final_Project_Data
         public string Title { get; set; }
 
         [UIHint("MultilineText")]
+        [Display(Name ="Job Description")]
         public string JobDescription { get; set; }
 
     }
