@@ -21,7 +21,7 @@ namespace Final_Project.Controllers
         {
             var applications = db.Applications.Include(a => a.ApplicationStatus).Include(a => a.OpenPosition);
 
-            if (User.IsInRole("Admin,Coporate,Manager,Employee"))
+            if (User.IsInRole("Employee"))
             {
                 var id = User.Identity.GetUserId();
 
@@ -34,8 +34,15 @@ namespace Final_Project.Controllers
                 }
 
             }
-            return View(applications.ToList());
 
+            if (User.IsInRole("Manager"))
+            {
+                var id = User.Identity.GetUserId();
+                var ManagerApps = db.Applications.ToList();
+                ManagerApps = ManagerApps.Where(x => x.OpenPosition.Location.ManagerId == id).ToList();
+                return View(ManagerApps.ToList());
+            }
+            return View(applications.ToList());
 
         }
 
@@ -93,6 +100,11 @@ namespace Final_Project.Controllers
             {
                 return HttpNotFound();
             }
+
+
+            ViewBag.Users = db.UserDetails.ToList();
+
+
             ViewBag.ApplicationStatus = new SelectList(db.ApplicationStatus1, "ApplicationStatusId", "StatusName", application.ApplicationStatus);
             ViewBag.OpenPositionId = new SelectList(db.OpenPositions, "OpenPositionId", "OpenPositionId", application.OpenPositionId);
             return View(application);
@@ -103,7 +115,7 @@ namespace Final_Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ApplicationId,OpenPositionId,UserId,ApplicationDate,ManagerNotes,ApplicationStatus,ResumeFilename")] Application application)
+        public ActionResult Edit([Bind(Include = "ApplicationId,OpenPositionId,UserId,ApplicationDate,ManagerNotes,ApplicationStatusId,ResumeFilename")] Application application)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +123,7 @@ namespace Final_Project.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ApplicationStatus = new SelectList(db.ApplicationStatus1, "ApplicationStatusId", "StatusName", application.ApplicationStatus);
+            ViewBag.ApplicationStatus = new SelectList(db.ApplicationStatus1, "ApplicationStatusId", "ApplicationStatusId", application.ApplicationStatus);
             ViewBag.OpenPositionId = new SelectList(db.OpenPositions, "OpenPositionId", "OpenPositionId", application.OpenPositionId);
             return View(application);
         }

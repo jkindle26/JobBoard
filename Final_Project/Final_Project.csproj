@@ -293,6 +293,7 @@
     <Content Include="Views\Shared\_EditPartial.cshtml" />
     <Content Include="Views\Locations\Create - Copy.cshtml" />
     <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\OpenPositions\ResumeUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

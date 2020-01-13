@@ -40,29 +40,41 @@
     {
         <tr>
             <td>
-                @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
+                @*@Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)*@
+                @item.ApplicationStatus.StatusName
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
+                @*@Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)*@
+                @item.OpenPosition.OpenPositionId
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.ApplicationDate)
+                @*@Html.DisplayNameFor(model => model.ApplicationDate)*@
+                @item.ApplicationDate
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.UserDetail.LastName)
+                @*@Html.DisplayNameFor(model => model.UserDetail.LastName)*@
+                @item.UserDetail.LastName
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.ResumeFilename)
+                @*@Html.DisplayNameFor(model => model.ResumeFilename)*@
+                @item.ResumeFilename
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.ManagerNotes)
+                @*@Html.DisplayNameFor(model => model.ManagerNotes)*@
+                @item.ManagerNotes
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ApplicationId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId })
             </td>
+
+            @if (User.IsInRole("Admin")||User.IsInRole("Corporate")||User.IsInRole("Manager"))
+            {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) 
+            </td>
+            }
         </tr>
-    }
+            }
+                        
 
 </table>

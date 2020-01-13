@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Final_Project_Data;
+using Microsoft.AspNet.Identity;
 
 namespace Final_Project.Controllers
 {
@@ -38,7 +39,7 @@ namespace Final_Project.Controllers
         }
 
         // GET: OpenPositions/Create
-        [Authorize(Roles ="Admin,Corporate,Manager")]
+        [Authorize(Roles = "Admin,Corporate,Manager")]
         public ActionResult Create()
         {
             ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "StoreNumber");
@@ -138,6 +139,81 @@ namespace Final_Project.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [Authorize]
+        public ActionResult Apply(int id)
+        {
+            var user = User.Identity.GetUserId();
+            Application application = new Application();
+            application.OpenPositionId = id;
+            application.UserId = user;
+            application.ApplicationDate = DateTime.Now;
+            application.ApplicationStatusId = 1;
+            application.ResumeFilename = db.UserDetails.Where(x => x.UserId == user).Select(x => x.ResumeFilename).FirstOrDefault();
+            if (string.IsNullOrEmpty(application.ResumeFilename) || application.ResumeFilename == "noresume")
+            {
+                application.ResumeFilename = "noresume";
+                return RedirectToAction("ResumeUpload", application);
+            }
+            db.Applications.Add(application);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Applications");
+
+        }
+        public ActionResult ResumeUpload(Application app)
+        {
+            return View(app);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResumeUpload([Bind(Include = "ApplicationId,OpenPositionId,UserId,ApplicationDate,ManagerNotes,ApplicationStatus,ResumeFilename")] Application application,
+            HttpPostedFileBase resume)
+        {
+            //fix
+            application.ApplicationStatusId = 1; //forcing this before validation
+
+            if (ModelState.IsValid)
+            {
+                //resume upload
+                UserDetail ud = db.UserDetails.Where(x => x.UserId == application.UserId).FirstOrDefault();
+
+                if (ud != null)
+                {
+                    //file upload
+                    string file = resume.FileName;
+                    string ext = file.Substring(file.LastIndexOf('.'));
+
+                    //assign that resume file name to the UserDetail and save
+                    //ud.ResumeFilename = whatever the filename ends up being
+                    string[] goodExts = { ".pdf" };
+
+                    if (goodExts.Contains(ext))
+                    {
+                        if (resume.ContentLength <= 10000000) //10mb
+                        {
+
+                            file = Guid.NewGuid() + ext;
+                            resume.SaveAs(Server.MapPath("~/Content/resumes/" + file));
+                            application.ResumeFilename = file;
+                            ud.ResumeFilename = file;
+                        }
+
+                        db.Entry(ud).State = EntityState.Modified;
+                        db.Applications.Add(application);
+                        db.SaveChanges();
+                        return RedirectToAction("Index", "Applications");
+
+                    }
+                }
+                else
+                {
+                    ViewBag.Error = "something went wrong, debug";
+                    return View(application);
+                }
+            }
+            return View(application);
         }
     }
 }

@@ -42,7 +42,8 @@
                 @Html.DisplayFor(modelItem => item.Position.Title)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.Position.JobDescription)
+                @*@Html.DisplayNameFor(model => model.Position.JobDescription)*@
+                @item.Position.JobDescription
             </td>
             @if (User.IsInRole("Admin,Corporate,Manager"))
             {
@@ -54,12 +55,12 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
                 </td>
             }
-            @if (User.IsInRole("employee"))
+            @if (User.IsInRole("Employee"))
             {
                 <td>
                     @Html.ActionLink("Apply","Apply", new { id=item.OpenPositionId})
                 </td>
-            };
+            }
         </tr>
     }
 
