@@ -3,65 +3,67 @@
 @{
     ViewBag.Title = "Index";
 }
+<section class="masthead team" style="padding:10rem 2rem ;">
 
-<h2>Job Openings</h2>
-@if (User.IsInRole("Admin") || User.IsInRole("Corporate") || User.IsInRole("Manager"))
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-}
-
-
-<table class="table">
-    <tr>
-        <th>
-        Store #
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Position.Title)
-        </th>
-        <th>
-            Job Description
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
+    <h2 class="text-white" style="font-size:4em;">Job Openings</h2>
+    @if (User.IsInRole("Admin") || User.IsInRole("Corporate") || User.IsInRole("Manager"))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location.StoreNumber)
-            </td>
-            <td>
-                @*@Html.DisplayNameFor(model => model.Location.City)*@
-                @item.Location.City
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Position.Title)
-            </td>
-            <td>
-                @*@Html.DisplayNameFor(model => model.Position.JobDescription)*@
-                @item.Position.JobDescription
-            </td>
-            @if (User.IsInRole("Admin") ||User.IsInRole("Corporate")||User.IsInRole("Manager"))
-            {
-
-
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OpenPositionId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
-                </td>
-            }
-            @if (User.IsInRole("Employee"))
-            {
-                <td>
-                    @Html.ActionLink("Apply","Apply", new { id=item.OpenPositionId})
-                </td>
-            }
-        </tr>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
     }
 
-</table>
+
+    <table class="table-striped text-white" style="border-spacing:15px;">
+        <tr>
+            <th style="padding:5px;font-weight:bold;">
+                Store
+            </th>
+            <th style="padding:17px;">
+                @Html.DisplayNameFor(model => model.Location.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position.Title)
+            </th>
+            <th>
+                Job Description
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.StoreNumber)
+                </td>
+                <td>
+                    @*@Html.DisplayNameFor(model => model.Location.City)*@
+                    @item.Location.City
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position.Title)
+                </td>
+                <td>
+                    @*@Html.DisplayNameFor(model => model.Position.JobDescription)*@
+                    @item.Position.JobDescription
+                </td>
+                @if (User.IsInRole("Admin") || User.IsInRole("Corporate") || User.IsInRole("Manager"))
+                {
+
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.OpenPositionId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
+                    </td>
+                }
+                @if (User.IsInRole("Employee"))
+                {
+                    <td>
+                        @Html.ActionLink("Apply", "Apply", new { id = item.OpenPositionId })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+</section>

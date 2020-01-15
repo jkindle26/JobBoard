@@ -1,68 +1,119 @@
-﻿<div id="content">
-    <div id="content-wrapper">
-        <!-- Jumbtron / Slider -->
-        <div class="jumbotron-wrap">
-            <div class="container-fluid">
-                <div id="mainCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="jumbotron">
-                                <h1 class="text-center">Tristique sem vitae metus ornare </h1>
-                                <p class="lead text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <p class="lead text-center">
-                                    <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-info"></i> &nbsp; Learn more</a>
-                                    <a class="btn btn-secondary btn-lg" href="#" role="button"><i class="fa fa-gbp"></i> &nbsp; Buy now</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="jumbotron">
-                                <h1 class="text-center">Cras sit amet nibh libero, in gravida nulla</h1>
-                                <p class="lead text-center">Nulla vel metus scelerisque ante sollicitudin. Cras purus odio.</p>
-                                <p class="lead text-center">
-                                    <a class="btn btn-outline-primary btn-lg" href="#" role="button"><i class="fa fa-info"></i> &nbsp; Learn more</a>
-                                    <a class="btn btn-outline-secondary btn-lg" href="#" role="button"><i class="fa fa-gbp"></i> &nbsp; Buy now</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#mainCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#mainCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
+﻿<body id="page-top">
+    <!-- Header -->
+    <header class="masthead">
+        <div class="container d-flex h-100 align-items-center">
+            <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0 text-uppercase">Job Board</h1>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5">Internal-Site</h2>
             </div>
         </div>
-        <!-- Main content area -->
-        <main class="container-fluid">
+    </header>
+    <!-- About Section -->
+    <section id="about" class="about-section text-center">
+        @*<div class="container">
             <div class="row">
-                <!-- Main content -->
-                <div class="col-md-8">
-                    <article>
-                        <h2 class="article-title">Introduction to message</h2>
-                        @Html.Partial("_LoginPartial")
-                    </article>
+                <div class="col-lg-4 mx-auto">
+                    <h2 class="text-white mb-4">Front-End</h2>
+                    <p class="text-white-50">
+                        <ul>
+                            <li>HTML</li>
+                            <li>JavaScript</li>
+                            <li>jQuery</li>
+                            <li>CSS</li>
+                            <li>React.JS</li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="col-lg-4 mx-auto">
+                    <h2 class="text-white mb-4">Mid-Tier</h2>
+                    <p class="text-white-50">
+                        <ul>
+                            <li>C#</li>
+                            <li>.NET</li>
+                        </ul>
+                    </p>
                 </div>
 
-
+                <div class="col-lg-4 mx-auto">
+                    <h2 class="text-white mb-4">Back End</h2>
+                    <p class="text-white-50">
+                        <ul>
+                            <li>SQL</li>
+                            <li>XML</li>
+                            <li>JSON</li>
+                            <li>MVC</li>
+                        </ul>
+                    </p>
+                </div>
             </div>
-        </main>
-
-        <!-- Footer -->
-        <div class="container-fluid footer-container">
-            <footer class="footer">
-                <div class="footer-lists">
-                    <div class="row">
+        </div>*@
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section bg-gray" style="background-color:#444;">
+        @*<div class="container">
+            <!-- Featured Project Row -->
+            <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+                <div class="col-xl-8 col-lg-7">
+                    <img class="~/Content/img-fluid-new mb-3 mb-lg-0" src="~/Content/img/39880691.jpg" alt="">
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="featured-text text-center text-lg-left">
+                        <h4>Centriq Training</h4>
+                        <p class="text-black-50 mb-0">I started Centriq in the fall of 2019. It gave me the chance to work on my development skills in a hands-on environment. While at Centriq I gained the skills to become a Full-Stack web developer. This began my transition into my tech career.  Like everything up to this point I aim to thrive in this field, learn as much as I can, and share my knowledge and experience with those that come after me.</p>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <p class="text-center">Web Template by <a href="https://zypopwebtemplates.com/">ZyPop</a>.</p>
+            </div>
+            <!-- Project One Row -->
+            <div class="row justify-content-center no-gutters bg-black mb-5 mb-lg-0">
+                <div class="col-lg-6">
+                    <img class="~/Content/img-fluid" src="~/Content/img/FFbw.jpg" alt="">
                 </div>
-            </footer>
+                <div class="col-lg-6">
+                    <div class="bg-black text-center h-100 project">
+                        <div class="d-flex h-100">
+                            <div class="project-text w-100 my-auto text-center text-lg-left">
+                                <h4 class="text-white">Personal Training</h4>
+                                <p class="mb-0 text-white-50">As founder of Never Quit Athletics, LLC I was given the chance to work with everyday people and help change their lives and sculpt their self-image. Before this I trained mostly private security. I got into this line of work while I was in the military. I had always been the one to push my self in every field I could and really excelled in the physical realm during this time. Thus, many asked me how I got here, and my training career took off.</p>
+                                <hr class="d-none d-lg-block mb-0 ml-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Two Row -->
+            <div class="row justify-content-center no-gutters bg-black">
+                <div class="col-lg-6">
+                    <img class="~/Content/img-fluid" src="~/Content/img/BWusmcafter.jpg" style="margin:auto; padding-top:5em;" alt="">
+                </div>
+                <div class="col-lg-6 order-lg-first">
+                    <div class="bg-black text-center h-100 project">
+                        <div class="d-flex h-100">
+                            <div class="project-text w-100 my-auto text-center text-lg-right">
+                                <h4 class="text-white">Military</h4>
+                                <p class="mb-0 text-white-50">In the military I had many roles. Each with its own standard, responsibilities, and of course challenges. In each of these I grew quickly with help from a select few marines. I found myself being promoted quicker than my peers and awarded in many of my roles. This was all possible because of the my mentors before me, the standards they set, and a mindset that was always pushing me forward.</p>
+                                <hr class="d-none d-lg-block mb-0 mr-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    </section>
+    @*<section class="contact-section bg-black" style="background-image: url('../../Content/img/gsWaterfall.jpg');background-repeat:no-repeat;background-size:cover; padding:2rem;">
+        <div class="container">
+            <div class="col-md-4 mb-3 mb-md-0" style="margin:auto;opacity:85%;">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Email</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">
+                            <a href="@Url.Action("Contact", "Home")">jkindle26@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+
+    </section>*@
+</body>

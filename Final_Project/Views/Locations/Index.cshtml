@@ -3,48 +3,51 @@
 @{
     ViewBag.Title = "Index";
 }
+<section class="masthead team" style="padding:10rem 5rem ;">
 
-<h2>Store Locations</h2>
+    <h2 class="text-white" style="font-size:4em;">Store Locations</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-        Store #
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            Manager
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table-striped text-white" style="border-spacing:15px;">
+        <tr>
+            <th style="padding:8px;font-weight:bold;">
+                Store
+            </th>
+            <th style="padding:12px;">
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th style="padding:11px;">
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                Manager
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoreNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserDetail.FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LocationId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LocationId })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StoreNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td style="padding:6px;">
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserDetail.FirstName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LocationId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.LocationId })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+    </section>

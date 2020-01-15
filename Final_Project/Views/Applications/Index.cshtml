@@ -3,78 +3,75 @@
 @{
     ViewBag.Title = "Applications";
 }
+<section class="masthead team" style="padding:10rem 5rem ;">
 
-<h2>@ViewBag.Title</h2>
+    <h2 class="text-white" style="font-size:4em;">@ViewBag.Title</h2>
 
-@if (Request.IsAuthenticated)
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-
-}
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserDetail.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ResumeFilename)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ManagerNotes)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+    @if (Request.IsAuthenticated)
     {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+
+    }
+    <table class="table-striped text-white" style="border-spacing:15px;">
         <tr>
-            <td>
+            <th style="padding:10px;">
                 @*@Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)*@
-                @item.ApplicationStatus.StatusName
-            </td>
-            <td>
+                Status
+            </th>
+            <th style="padding:10px;">
                 @*@Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)*@
-                @item.OpenPosition.OpenPositionId
-            </td>
-            <td>
-                @*@Html.DisplayNameFor(model => model.ApplicationDate)*@
-                @item.ApplicationDate
-            </td>
-            <td>
-                @*@Html.DisplayNameFor(model => model.UserDetail.LastName)*@
-                @item.UserDetail.LastName
-            </td>
-            <td>
-                @*@Html.DisplayNameFor(model => model.ResumeFilename)*@
-                @item.ResumeFilename
-            </td>
-            <td>
-                @*@Html.DisplayNameFor(model => model.ManagerNotes)*@
-                @item.ManagerNotes
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId })
-            </td>
-
-            @if (User.IsInRole("Admin")||User.IsInRole("Corporate")||User.IsInRole("Manager"))
-            {
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) 
-            </td>
-            }
+                Position ID
+            </th>
+            <th style="padding:10px;">
+                @Html.DisplayNameFor(model => model.ApplicationDate)
+            </th>
+            <th style="padding:10px;">
+                @Html.DisplayNameFor(model => model.UserDetail.LastName)
+            </th>
+            <th style="padding:10px;">
+                @Html.DisplayNameFor(model => model.ManagerNotes)
+            </th>
+            <th></th>
         </tr>
-            }
-                        
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*@Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)*@
+                    @item.ApplicationStatus.StatusName
+                </td>
+                <td>
+                    @*@Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)*@
+                    @item.OpenPosition.OpenPositionId
+                </td>
+                <td>
+                    @*@Html.DisplayNameFor(model => model.ApplicationDate)*@
+                    @item.ApplicationDate.ToShortDateString()
+                </td>
+                <td>
+                    @*@Html.DisplayNameFor(model => model.UserDetail.LastName)*@
+                    @item.UserDetail.LastName
+                </td>
+                <td>
+                    @*@Html.DisplayNameFor(model => model.ManagerNotes)*@
+                    @item.ManagerNotes
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId })
+                </td>
+
+                @if (User.IsInRole("Admin") || User.IsInRole("Corporate") || User.IsInRole("Manager"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId })
+                    </td>
+                }
+            </tr>
+        }
+
+
+    </table>
+    </section>

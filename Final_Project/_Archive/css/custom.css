@@ -1,0 +1,61 @@
+﻿.projects-section {
+    padding: 1rem 0;
+}
+.contact-section {
+    padding: 2rem 0 0;
+}
+/**********************CUSTOM LIGHTBOX******************************/
+.thumb {
+    cursor: pointer;
+}
+
+#lightbox-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.8);
+    text-align: center; /*this applies to images and text*/
+    padding-top: 65px;
+    display: none;
+}
+
+    #lightbox-container p {
+        color: white;
+    }
+
+#lightbox-content img {
+    border: 10px solid gray;
+    margin: auto;
+}
+
+
+/* Caption text */
+.caption-container {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: white;
+}
+
+img.demo {
+    opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+    opacity: 1;
+}
+
+img.hover-shadow {
+    transition: 0.3s;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*****Social hubs*****/
+.social d-flex justify-content-center {
+    color: #8B67F5;
+}

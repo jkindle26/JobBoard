@@ -1,12 +1,13 @@
 ﻿@model Final_Project.Models.ContactViewModels
 
+<section class="masthead team" style="padding-left:15em;">
 
-<!-- Navigation -->
-<h2>Contact Us</h2>
+    <!-- Navigation -->
+    <h2>Contact Us</h2>
 
-<div class="container">
-    @*@using (Html.BeginForm())*@
-    
+    <div class="container">
+        @*@using (Html.BeginForm())*@
+
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
             @if (ViewBag.FailedSend != null)
@@ -65,6 +66,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
-</div>
+    </div>
+    </section>
