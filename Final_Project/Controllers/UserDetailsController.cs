@@ -10,6 +10,8 @@ using Final_Project_Data;
 
 namespace Final_Project.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class UserDetailsController : Controller
     {
         private JobBoardEntities db = new JobBoardEntities();

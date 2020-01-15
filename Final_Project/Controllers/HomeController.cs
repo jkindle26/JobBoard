@@ -76,7 +76,7 @@ namespace Final_Project.Controllers
 
 
             }//ModelStatIsValid
-            return View(cvm);
+            return View("Index");
 
         }
 

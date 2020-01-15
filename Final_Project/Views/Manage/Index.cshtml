@@ -1,32 +1,29 @@
 ﻿@model IdentitySample.Models.IndexViewModel
 @using Final_Project_Data
 @using Microsoft.AspNet.Identity
-@{
-    ViewBag.Title = "Manage your account";
-}
 
-<h2>@ViewBag.Title.</h2>
-@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div class="row">
-    <div class="col-md-8">
-        <p>
-            @(Model.HasPassword ? Html.ActionLink("Change your password", "ChangePassword")
-                        : Html.ActionLink("Pick a password", "SetPassword"))
-        </p>
-        <p>
+    @*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div class="row bg-black text-white">
+        <div class="col-md-8">
+            @*<p>
+                @(Model.HasPassword ? Html.ActionLink("Change your password", "ChangePassword")
+                                    : Html.ActionLink("Pick a password", "SetPassword"))
+            </p>*@
+            <p>
 
-        <p>
-    </div>
-    <div>
-        @section partial {
-            @{ 
-                JobBoardEntities db = new JobBoardEntities();
-                var userId = User.Identity.GetUserId();
-                var userDetail = db.UserDetails.Where(x => x.UserId == userId).FirstOrDefault();
+            <p>
+        </div>
+        <div>
+            @section partial {
+                @{
+                    JobBoardEntities db = new JobBoardEntities();
+                    var userId = User.Identity.GetUserId();
+                    var userDetail = db.UserDetails.Where(x => x.UserId == userId).FirstOrDefault();
+                }
+                @Html.Partial("_EditPartial", userDetail)
             }
-            @Html.Partial("_EditPartial", userDetail)
-        }
 
+        </div>
     </div>
-</div>
+    

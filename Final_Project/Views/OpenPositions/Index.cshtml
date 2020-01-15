@@ -33,17 +33,17 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td style="padding:5px">
                     @Html.DisplayFor(modelItem => item.Location.StoreNumber)
                 </td>
-                <td>
+                <td style="padding:5px">
                     @*@Html.DisplayNameFor(model => model.Location.City)*@
                     @item.Location.City
                 </td>
-                <td>
+                <td style="padding:5px">
                     @Html.DisplayFor(modelItem => item.Position.Title)
                 </td>
-                <td>
+                <td style="padding:5px">
                     @*@Html.DisplayNameFor(model => model.Position.JobDescription)*@
                     @item.Position.JobDescription
                 </td>

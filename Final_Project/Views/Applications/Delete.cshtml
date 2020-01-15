@@ -1,72 +1,72 @@
 ﻿@model Final_Project_Data.Application
-
-@{
-    ViewBag.Title = "Delete";
-}
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Application</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ManagerNotes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ManagerNotes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ResumeFilename)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ResumeFilename)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationStatu.StatusName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationStatu.StatusName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OpenPosition.OpenPositionId)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<section class="masthead team text-white" style="padding:10rem 5rem ;">
+    @{
+        ViewBag.Title = "Delete";
     }
-</div>
+
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ManagerNotes)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ManagerNotes)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ResumeFilename)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ResumeFilename)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationStatus.StatusName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OpenPosition.OpenPositionId)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-primary js-scroll-trigger" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+    </section>

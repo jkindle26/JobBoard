@@ -30,9 +30,13 @@
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href=@Url.Action( "Index", "Home")>Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href=@Url.Action("Contact", "Home")>Contact</a>
-                        </li>
+                        @if(!User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href=@Url.Action("Contact", "Home")>Contact</a>
+                            </li>
+                        }
+
                         @if (Request.IsAuthenticated)
                         {
                             <li class="nav-item">
@@ -44,6 +48,9 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" href=@Url.Action("Index", "Locations")>Locations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href=@Url.Action("Index", "UserDetails")>User Details</a>
                             </li>
                         }
 
@@ -65,7 +72,7 @@
                         }
                         <li class="nav-item" style="margin:auto;">
                             @Html.Partial("_LoginPartial")
-                            </li>
+                        </li>
                     </ul>
                 </div>
 
@@ -76,6 +83,8 @@
     </nav>
     <!-- Header -->
     @RenderBody()
+    @RenderSection("partial", false)
+
     <!-- Contact Section -->
     <section class="contact-section bg-black" style="padding-top:135px;">
 

@@ -30,7 +30,7 @@ namespace Final_Project.Controllers
                 if (applications.Count() == 0)
                 {
                     Session["NoApplications"] = " You Currently Have Not Applied";
-                    return RedirectToAction("OpenPositions");
+                    return RedirectToAction("Create");
                 }
 
             }
